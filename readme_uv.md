@@ -34,6 +34,9 @@ uv pip install -r requirements.txt
 # Install pip (required for chumpy setup)
 uv pip install pip
 
+#clone chumpy repo
+git clone https://github.com/Arthur151/chumpy python_libs/chumpy
+
 # Install chumpy in editable mode
 uv pip install -e python_libs/chumpy --no-build-isolation
 ```
@@ -42,6 +45,9 @@ uv pip install -e python_libs/chumpy --no-build-isolation
 Install the specific wheels provided in the repository. **Note:** We must ensure only `gloss-rs` is installed (uninstall `gloss` if it was pulled in as a dependency).
 
 ```bash
+# Download wheels
+gdown --folder -O ./data/ https://drive.google.com/drive/folders/151gPvMaUWok_pDQT6h8Rpvk_rCcKvcWZ?usp=sharing
+
 # Fix gloss conflict and install correct viewer
 uv pip uninstall gloss gloss-rs
 uv pip install data/wheels/gloss_rs-0.6.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
@@ -61,7 +67,11 @@ Run the fetch script and use the following credentials when prompted. Note that 
 - **Password:** `12345678`
 
 ```bash
+# SMPLX family models
 bash scripts/fetch_smplx.sh
+
+# Checkpoints and annotations
+bash scripts/fetch_data.sh
 ```
 
 ## 6. Run the Demos
