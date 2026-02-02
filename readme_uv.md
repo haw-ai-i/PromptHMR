@@ -62,7 +62,8 @@ uv pip install data/wheels/detectron2-0.9-cp312-cp312-linux_x86_64.whl \
 ## 5. Download Body Models (SMPL/SMPL-X)
 Run the fetch script and use the following credentials when prompted. Note that SMPL and SMPL-X have separate login prompts.
 
-**Credentials:**
+
+**Credentials:** (The credentials here are not working for fetching SMPL-X files. Solution: create your own account.)
 - **Username:** `molybog@hawaii.edu`
 - **Password:** `12345678`
 
