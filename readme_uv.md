@@ -122,14 +122,19 @@ What this means:
 pick your video and set the path to it:
 
 ```bash
-export PATH_TO_VIDEO=<path/to/your/video.mp4>
+export PATH_TO_VIDEO=<path/to/your/video_dir>
+export VIDEO_NAME=<your_video_name>
 
 # examples: 
-# export PATH_TO_VIDEO=data/examples/boxing_short.mp4
-# export PATH_TO_VIDEO=/home/igormolybog/Downloads/PXL_20260114_220205443.mp4
+# export PATH_TO_VIDEO=data/examples
+# export VIDEO_NAME=boxing_short.mp4
 
-uv run python scripts/demo_video.py --input_video $PATH_TO_VIDEO
+# export PATH_TO_VIDEO=/home/user/Downloads
+# export VIDEO_NAME=PXL_20260114_220205443.mp4
+
+uv run python scripts/demo_video.py --input_video $PATH_TO_VIDEO/$VIDEO_NAME
 ```
 
+Find the results in `results/$VIDEO_NAME/results.pkl`.
 
 
