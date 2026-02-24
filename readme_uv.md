@@ -2,6 +2,30 @@
 
 This guide documents the specific steps required to set up PromptHMR using `uv` on a Linux system with CUDA 12.6, ensuring compatibility with the pre-compiled wheels in `data/wheels/`.
 
+> [!IMPORTANT]
+> All commands in this guide must be executed from the root of the `PromptHMR` repository.
+
+## 0. Install uv
+(if you don't have it)
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+## 0.1. Add uv to path
+```bash
+source $HOME/.local/bin/env
+```
+
+### Video World-coordinate Reconstruction
+The video pipeline requires `ffmpeg` and `ffprobe` installed on your system.
+
+```bash
+# Install system dependencies
+sudo apt update && sudo apt install ffmpeg -y
+
+```
+
+
 ## 1. Create Environment (Python 3.12)
 The provided wheels are compiled for Python 3.12. Using Python 3.11 will result in binary incompatibility errors.
 
@@ -66,12 +90,14 @@ Run the fetch script and use the following credentials when prompted. Note that 
 - **Username:** `molybog@hawaii.edu`
 - **Password:** `12345678`
 
+The credentials will be needed twice: for SMPLX and for SMPL. Use the same credentials for both.
+
 ```bash
 # SMPLX family models
-bash scripts/fetch_smplx.sh
+uv run bash scripts/fetch_smplx.sh
 
 # Checkpoints and annotations
-bash scripts/fetch_data.sh
+uv run bash scripts/fetch_data.sh
 ```
 
 ## 6. Run the Demos
@@ -81,14 +107,5 @@ bash scripts/fetch_data.sh
 uv run scripts/demo_phmr.py --image data/examples/example_1.jpg --gravity_align
 ```
 
-### Video World-coordinate Reconstruction
-The video pipeline requires `ffmpeg` and `ffprobe` installed on your system.
 
-```bash
-# Install system dependencies
-sudo apt update && sudo apt install ffmpeg -y
-
-# Run video demo
-uv run scripts/demo_video.py --input_video data/examples/boxing.mp4
-```
 
