@@ -100,11 +100,35 @@ uv run bash scripts/fetch_smplx.sh
 uv run bash scripts/fetch_data.sh
 ```
 
+There is a possiblility to see error like:
+
+```
+Too many users have viewed or downloaded this file recently. Please try accessing the file again later. 
+You may still be able to access the file from the browser but Gdown can't.
+```
+
+What this means:
+- The gdown fetch failed while downloading because Google Drive is rate-limited when too many users have accessed that
+    file recently.
+- Two practical next steps:
+      1. Wait up to 24 hours and re-run bash scripts/fetch_data.sh so gdown can complete without the rate-limit error.
+      2. If you need the data sooner, go to scripts/fetch_data.sh, find which files failed to download, download them using a browser and move them to the place they are supposed to be in.
+
+
 ## 6. Run the Demos
 
 ### Single View Reconstruction
+
+pick your video and set the path to it:
+
 ```bash
-uv run scripts/demo_phmr.py --image data/examples/example_1.jpg --gravity_align
+export PATH_TO_VIDEO=<path/to/your/video.mp4>
+
+# examples: 
+# export PATH_TO_VIDEO=data/examples/boxing_short.mp4
+# export PATH_TO_VIDEO=/home/igormolybog/Downloads/PXL_20260114_220205443.mp4
+
+uv run python scripts/demo_video.py --input_video $PATH_TO_VIDEO
 ```
 
 
