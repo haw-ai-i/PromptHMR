@@ -70,7 +70,7 @@ Install the specific wheels provided in the repository. **Note:** We must ensure
 
 ```bash
 # Download wheels
-gdown --folder -O ./data/ https://drive.google.com/drive/folders/151gPvMaUWok_pDQT6h8Rpvk_rCcKvcWZ?usp=sharing
+uv run gdown --folder -O ./data/ https://drive.google.com/drive/folders/151gPvMaUWok_pDQT6h8Rpvk_rCcKvcWZ?usp=sharing
 
 # Fix gloss conflict and install correct viewer
 uv pip uninstall gloss gloss-rs
